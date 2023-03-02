@@ -5,12 +5,13 @@ package lab01.example.model;
  * In particular, a Simple Bank Account allows always the deposit
  * while the withdrawal is allowed only if the balance greater or equal the withdrawal amount
  */
-public class SimpleBankAccount implements BankAccount {
+public class SimpleBankAccountWithAtm implements BankAccount {
 
+    public static final int ATM_FEE = 1;
     private double balance;
     private final AccountHolder holder;
 
-    public SimpleBankAccount(final AccountHolder holder, final double balance) {
+    public SimpleBankAccountWithAtm(final AccountHolder holder, final double balance) {
         this.holder = holder;
         this.balance = balance;
     }
@@ -33,7 +34,7 @@ public class SimpleBankAccount implements BankAccount {
 
     @Override
     public void depositWithAtm(int userID, int amount) {
-        throw new UnsupportedOperationException();
+        this.deposit(userID, amount - ATM_FEE);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class SimpleBankAccount implements BankAccount {
 
     @Override
     public void withdrawWithAtm(int userID, int amount) {
-        throw new UnsupportedOperationException();
+        this.withdraw(userID, amount + ATM_FEE);
     }
 
     private boolean isWithdrawAllowed(final double amount){
