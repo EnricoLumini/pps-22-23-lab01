@@ -27,6 +27,14 @@ public interface BankAccount {
     void deposit(int userID, double amount);
 
     /**
+     * Allows the deposit of an amount on the account using an ATM, if the given userID corresponds to the register
+     * holder ID of the bank account. This ID acts like an "identification token". Must be paid a transaction fee
+     * @param userID the id of the user that wants do the deposit
+     * @param amount the amount of the deposit
+     */
+    void depositWithAtm(int userID, int amount);
+
+    /**
      * Allows the withdrawal of an amount from the account, if the given userID corresponds to the register holder ID
      * of the bank account. This ID acts like an "identification token" .
      *
@@ -34,4 +42,14 @@ public interface BankAccount {
      * @param amount the amount of the withdrawal
      */
     void withdraw(int userID, double amount);
+
+    /**
+     * Allows the withdrawal of an amount from the account using an ATM, if the given userID corresponds
+     * to the register holder ID of the bank account. This ID acts like an "identification token".
+     * Must be paid a transaction fee
+     *
+     * @param userID the id of the user that wants do the withdrawal
+     * @param amount the amount of the withdrawal
+     */
+    void withdrawWithAtm(int userID, int amount);
 }
